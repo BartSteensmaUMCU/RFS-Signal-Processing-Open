@@ -38,7 +38,7 @@ def cardiac_template(phi):
     v = (-0.60 * smooth_step(phi, 0.05, 0.35)
          + 0.45 * smooth_step(phi, 0.45, 0.65)
          + 0.15 * smooth_step(phi, 0.85, 0.97))
-    return v + 0.25j * np.sin(2 * np.pi * phi)
+    return v 
 
 
 def breathing_waveform(psi):
@@ -88,8 +88,8 @@ def simulate(duration=180.0, fs=500.0, seed=0,
     s0 = 0.8 * np.exp(1j * 0.6)
     drift = (3e-3 * (t / duration) * np.exp(1j * 1.0)
              + 1e-3 * np.sin(2 * np.pi * t / 90) * np.exp(1j * 2.5))
-    powerline = 4e-4 * np.cos(2 * np.pi * 50 * t + 0.3) * (1 + 0.5j)
-    noise = 1.5e-4 * (rng.standard_normal(t.size) + 1j * rng.standard_normal(t.size)) / np.sqrt(2)
+    powerline = 1e-5 * np.cos(2 * np.pi * 50 * t + 0.3) * (1 + 0.5j)
+    noise = 6e-5 * (rng.standard_normal(t.size) + 1j * rng.standard_normal(t.size)) / np.sqrt(2)
     artifacts = np.zeros_like(t, dtype=complex)
     for ta in artifact_times:
         artifacts += (artifact_amp * np.exp(1j * rng.uniform(0, 2 * np.pi))

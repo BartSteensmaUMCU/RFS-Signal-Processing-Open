@@ -107,7 +107,7 @@ for b in range(N_BINS):
     if truth_avg is not None:
         a.plot(truth_avg[b].real, truth_avg[b].imag, "--", color=colors[b], lw=1)
 a.plot(0, 0, "k+", ms=12)
-a.set(title="Averaged beats in IQ plane (dashed: truth)", xlabel="I", ylabel="Q", aspect="equal")
+a.set(title="Averaged beats in complex plane (dashed: truth)", xlabel="Real", ylabel="Imaginary", aspect="equal")
 a.legend(loc="best")
 
 a = ax[2, 1]
