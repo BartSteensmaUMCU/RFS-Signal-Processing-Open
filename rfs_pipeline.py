@@ -75,12 +75,12 @@ def segment_beats(x, r_peaks, n_out=100):
 
 # 4. Artifact detection ------------------------------------------------------
 
-def detect_artifacts(x, fs, threshold=5.0, buffer_s=1.0):
+def detect_artifacts(x, fs, threshold=7.0, buffer_s=1.0):
     """Boolean mask, True where the Hilbert envelope exceeds threshold times its median.
  
     For complex input the envelope is computed from the analytic signals of the
-    real and imaginary parts, sqrt(|H(I)|^2 + |H(Q)|^2), which is invariant to a
-    rotation of the IQ plane. Every outlier is extended by buffer_s seconds on both sides.
+    real and imaginary parts, sqrt(|H(Re)|^2 + |H(Im)|^2), which is invariant to a
+    rotation of the complex plane. Every outlier is extended by buffer_s seconds on both sides.
     """
     x = np.asarray(x) - np.mean(x)
     if np.iscomplexobj(x):

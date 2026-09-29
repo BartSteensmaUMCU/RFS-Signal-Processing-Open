@@ -8,6 +8,7 @@
 *.nii.gz
 *.nii
 *.dcm
+*.png
 *.json
 *.xml
 *.log
